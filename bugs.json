@@ -1,0 +1,28 @@
+{
+  "app": "ShopLite",
+  "note": "Ground truth for the accuracy benchmark. `signals` are lowercase phrases; a finding is matched to a bug when its title/expected/actual/steps text contains at least one signal AND (if `paths` is set) mentions one of the paths. Matching is a first pass: see benchmark/README.md for the manual review step.",
+  "bugs": [
+    { "id": "BUG-01", "type": "javascript-error", "severity": "medium", "title": "Sort by price throws a JavaScript error and does not sort", "paths": ["/products"], "signals": ["sort by price", "sort button", "sort"] },
+    { "id": "BUG-02", "type": "broken-link", "severity": "low", "title": "Footer 'Shipping policy' link leads to a 404", "paths": ["shipping-policy"], "signals": ["shipping policy", "shipping-policy"] },
+    { "id": "BUG-03", "type": "calculation", "severity": "high", "title": "Cart total ignores item quantity", "paths": ["/cart"], "signals": ["quantity", "total", "qty"] },
+    { "id": "BUG-04", "type": "calculation", "severity": "high", "title": "SAVE10 coupon says 10% off but takes only 1%", "paths": ["/cart"], "signals": ["save10", "coupon", "discount"] },
+    { "id": "BUG-05", "type": "validation", "severity": "medium", "title": "Contact form accepts an empty email and reports 'Message sent'", "paths": ["/contact"], "signals": ["empty email", "email", "message sent", "validation"] },
+    { "id": "BUG-06", "type": "validation", "severity": "high", "title": "Checkout accepts a non-numeric card number", "paths": ["/checkout"], "signals": ["card number", "card", "credit card", "payment"] },
+    { "id": "BUG-07", "type": "state", "severity": "medium", "title": "Cart badge is not updated after removing an item", "paths": ["/cart"], "signals": ["badge", "cart count", "counter", "item count"] },
+    { "id": "BUG-08", "type": "dead-control", "severity": "high", "title": "Add to cart does nothing on the Camp Stove product page", "paths": ["/product/3"], "signals": ["camp stove", "add to cart", "no response", "nothing happens"] },
+    { "id": "BUG-09", "type": "server-error", "severity": "high", "title": "Search with an apostrophe returns HTTP 500", "paths": ["/search"], "signals": ["apostrophe", "500", "internal server error", "special character"] },
+    { "id": "BUG-10", "type": "navigation", "severity": "high", "title": "Successful login redirects to /account/undefined (404)", "paths": ["/login", "/account"], "signals": ["undefined", "redirect", "after login", "404"] },
+    { "id": "BUG-11", "type": "authorization", "severity": "high", "title": "/account is viewable without logging in", "paths": ["/account"], "signals": ["without logging in", "not logged in", "unauthenticated", "without authentication", "signed in as"] },
+    { "id": "BUG-12", "type": "accessibility", "severity": "low", "title": "Login inputs have no accessible label", "paths": ["/login"], "signals": ["label", "accessible", "aria", "screen reader"] },
+    { "id": "BUG-13", "type": "pagination", "severity": "medium", "title": "Products page 2 repeats an item from page 1", "paths": ["/products"], "signals": ["page 2", "duplicate", "repeat", "pagination", "same product"] },
+    { "id": "BUG-14", "type": "data-display", "severity": "medium", "title": "Headlamp price is shown as $NaN", "paths": ["/products", "/product/5"], "signals": ["nan", "headlamp", "price"] },
+    { "id": "BUG-15", "type": "business-logic", "severity": "medium", "title": "Out-of-stock Sleeping Bag can be added to the cart", "paths": ["/product/7"], "signals": ["out of stock", "sleeping bag", "unavailable"] },
+    { "id": "BUG-16", "type": "business-logic", "severity": "high", "title": "Checkout with an empty cart confirms order #undefined", "paths": ["/checkout"], "signals": ["empty cart", "order confirmed", "#undefined", "undefined"] }
+  ],
+  "decoys": [
+    { "id": "DECOY-1", "title": "/slow takes about 1.5 seconds to load, by design", "signals": ["slow", "load time", "takes long"], "paths": ["/slow"] },
+    { "id": "DECOY-2", "title": "Register rejects mismatched passwords correctly", "signals": ["password", "do not match"], "paths": ["/register"] },
+    { "id": "DECOY-3", "title": "Unknown URLs show a friendly 404 page, which is correct", "signals": ["404", "not found"], "paths": ["/careers", "/does-not-exist"] },
+    { "id": "DECOY-4", "title": "A search with no matches shows 'No results found', which is correct", "signals": ["no results"], "paths": ["/search"] }
+  ]
+}
