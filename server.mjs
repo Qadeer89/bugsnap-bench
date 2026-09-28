@@ -215,7 +215,7 @@ export function createShopLite() {
     if (url.pathname === "/search") {
       const q = url.searchParams.get("q") ?? "";
       // BUG-09: a query containing an apostrophe crashes the handler (HTTP 500).
-      if (q.includes("'")) return send(500, "Internal Server Error", "text/plain");
+      // BUG-09 fixed: apostrophe no longer crashes search
       const hits = PRODUCTS.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()));
       // DECOY D4: an empty result is a correct, friendly "No results".
       return send(
