@@ -13,7 +13,7 @@ const PRODUCTS = [
   { id: 2, name: "Steel Bottle", price: 24 },
   { id: 3, name: "Camp Stove", price: 59 },
   { id: 4, name: "Wool Socks", price: 14 },
-  { id: 5, name: "Headlamp", price: undefined }, // BUG-14: no price -> "$NaN"
+  { id: 5, name: "Headlamp", price: 45 },
   { id: 6, name: "Rain Shell", price: 120 },
   { id: 7, name: "Sleeping Bag", price: 140, outOfStock: true },
   { id: 8, name: "Trekking Poles", price: 65 },

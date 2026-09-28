@@ -4,5 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "node test/smoke.mjs"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
   }
 }
